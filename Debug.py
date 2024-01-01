@@ -29,8 +29,7 @@ class BashDb():
         if self.prevCmd:
             text = text[1:]
         for line in text:
-            matchObj = re.match(r'\s?\((.*\.sh):(\d+)\):', line)
-            if matchObj:
+            if matchObj := re.match(r'\s?\((.*\.sh):(\d+)\):', line):
                 self.curSourceFile = matchObj.group(1)
                 self.curCodeLine = int(matchObj.group(2))
                 break
